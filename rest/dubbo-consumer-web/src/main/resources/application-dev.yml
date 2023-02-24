@@ -11,7 +11,7 @@ dubbo:
     qos-accept-foreign-ip: false
   registry:
     address: zookeeper://127.0.0.1:2181
-    file: /data/.dubbo/rest.cache
+    file: /data/.dubbo/rest-consumer.cache
   consumer:
     check: false
     timeout: 30000

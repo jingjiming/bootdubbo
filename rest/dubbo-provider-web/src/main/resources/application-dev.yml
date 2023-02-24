@@ -9,7 +9,7 @@ dubbo:
   registry:
     address: zookeeper://127.0.0.1:2181
     timeout: 100000
-    file: /data/.dubbo/provider.cache
+    file: /data/.dubbo/rest-provider.cache
   protocol:
     name: dubbo
     port: 6071
