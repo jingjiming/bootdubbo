@@ -90,7 +90,12 @@ public class ZipUtils {
             parameters.setEncryptionMethod(EncryptionMethod.ZIP_STANDARD);
         }
         try {
-            ZipFile zipFile = new ZipFile(dest, passwd.toCharArray());
+            ZipFile zipFile;
+            if (!StringUtils.isEmpty(passwd)) {
+                zipFile = new ZipFile(dest, passwd.toCharArray());
+            } else {
+                zipFile = new ZipFile(dest);
+            }
             if (srcFile.isDirectory()) {
                 // 如果不创建目录的话,将直接把给定目录下的文件压缩到压缩文件,即没有目录结构
                 if (!isCreateDir) {
@@ -353,7 +358,7 @@ public class ZipUtils {
     }
 
     public static void main(String[] args) throws Exception {
-        System.out.println(zip("d:\\backup\\2", "1"));
+        System.out.println(zip("d:\\backup\\2"));
         /** 测试压缩方法1  */
         //FileOutputStream fos1 = new FileOutputStream(new File("d:/01.zip"));
         //ZipUtils.toZip("D:/backup/1", fos1, true);
