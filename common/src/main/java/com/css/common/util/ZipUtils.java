@@ -8,7 +8,10 @@ import net.lingala.zip4j.model.enums.CompressionLevel;
 import net.lingala.zip4j.model.enums.CompressionMethod;
 import net.lingala.zip4j.model.enums.EncryptionMethod;
 
-import java.io.*;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.OutputStream;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -297,7 +300,7 @@ public class ZipUtils {
      * @param dest   解压目录
      * @param passwd ZIP文件的密码
      * @return 解压后文件数组
-     * @throws net.lingala.zip4j.exception.ZipException 压缩文件有损坏或者解压缩失败抛出
+     * @throws ZipException 压缩文件有损坏或者解压缩失败抛出
      */
     public static File[] unzip(String zip, String dest, String passwd) throws ZipException {
         File zipFile = new File(zip);
@@ -310,7 +313,7 @@ public class ZipUtils {
      * @param zip    指定的ZIP压缩文件
      * @param passwd ZIP文件的密码
      * @return 解压后文件数组
-     * @throws net.lingala.zip4j.exception.ZipException 压缩文件有损坏或者解压缩失败抛出
+     * @throws ZipException 压缩文件有损坏或者解压缩失败抛出
      */
     public static File[] unzip(String zip, String passwd) throws ZipException {
         File zipFile = new File(zip);
@@ -327,7 +330,7 @@ public class ZipUtils {
      * @param dest    解压目录
      * @param passwd  ZIP文件的密码
      * @return 解压后文件数组
-     * @throws net.lingala.zip4j.exception.ZipException 压缩文件有损坏或者解压缩失败抛出
+     * @throws ZipException 压缩文件有损坏或者解压缩失败抛出
      */
     public static File[] unzip(File zipFile, String dest, String passwd) throws ZipException {
         ZipFile zFile = new ZipFile(zipFile);
@@ -358,7 +361,7 @@ public class ZipUtils {
     }
 
     public static void main(String[] args) throws Exception {
-        System.out.println(zip("d:\\backup\\2"));
+        System.out.println(zip("d:\\backup\\2", "1"));
         /** 测试压缩方法1  */
         //FileOutputStream fos1 = new FileOutputStream(new File("d:/01.zip"));
         //ZipUtils.toZip("D:/backup/1", fos1, true);
